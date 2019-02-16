@@ -1,4 +1,7 @@
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 
 
 <?php
@@ -24,15 +27,12 @@ class main{
     static public function start($csvfilename) {
 
         $records = CSV::getRecords($csvfilename);
-        $table - html::generateTable($records);
+        $table = html::generateTable($records);
 
 
 
         }
 
-
-
-    
 
 }
 
@@ -91,7 +91,7 @@ class record {
         return $array;
     }
 
-    public function createProperty($name = 'first', $value = 'keith') {
+    public function createProperty($name, $value) {
         $this -> {$name} = $value;
 
     }
@@ -115,37 +115,58 @@ class recordFactory {
 
 
 }
-class html {
-    public static function generateTable($records) {
+class html
+{
+    public static function generateTable($records)
+    {
 
+        $count = 0;
         foreach ($records as $record) {
-            $array = $record->returnArray();
-            print_r($array);
+
+            if ($count == 0) {
+                $array = $record->returnArray();
+                $headings = array_keys($array);
+            } else {
+            }
+            $count++;
+
+            
+    }
+
+        $table = "";
+
+        $table .= "<div class='container', style='background-color: wheat' >";
+
+        $table .= "<table class='table table-striped table-hover'>";
+
+        $table .= "<tr>";
+
+        foreach ($headings as $key => $value) {
+            $table .= "<th>$value</th>";
         }
+        $table .= "</tr>";
 
+        foreach ($records as $key => $value) {
+            $table .= "<tr>";
+            foreach ($value as $key2 => $value2)
+                $table .= "<td>$value2</td>";
+        }
+        $table .= "</tr>";
+
+
+
+        $table .= "</table>";
+
+        echo $table;
     }
+
 }
 
+?>
 
 
-/** HTML table output
 
-$table  = "";
 
-$table .= "<div class='container', style='background-color: lemonchiffon' >";
-
-$table .= "<table class='table table-striped table-hover'>";
-
-foreach($records as $key => $element){
-    $table .= "<tr>";
-    foreach($element as $subkey => $subelement){
-        $table .= "<td>$subelement</td>";
-    }
-    $table .= "</tr>";
-}
-$table .= "</table>";
-
-echo $table;  */
 
 
 

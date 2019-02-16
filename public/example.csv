@@ -1,5 +1,5 @@
-First,Last,UCID,Grade,Term,School
-Keith,Williams,kwilliams,A,Fall,NJIT
-Joe,Smith,jsmith,B,Fall,Rutgers
-Jack,Johnson,jjohnson,B,Summer,Rutgers
-Harry,Manback,hmanback,F,Spring,NJIT
+First,Last,UCID,Grade,Term,School,Major,Course
+Keith,Williams,kwilliams,A,Fall,NJIT,CS,CS101
+Joe,Smith,jsmith,B,Fall,Rutgers,EE,EE201
+Jack,Johnson,jjohnson,B,Summer,Rutgers,ME,ME-409
+Harry,Manback,hmanback,F,Spring,NJIT,CE,CE-345
