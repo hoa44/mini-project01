@@ -130,8 +130,8 @@ class html
             }
             $count++;
 
-            
     }
+
 
         $table = "";
 
@@ -148,14 +148,14 @@ class html
 
         foreach ($records as $key => $value) {
             $table .= "<tr>";
-            foreach ($value as $key2 => $value2)
-                $table .= "<td>$value2</td>";
+                foreach ($value as $key2 => $value2)
+                    $table .= "<td>$value2</td>";
         }
         $table .= "</tr>";
 
-
-
         $table .= "</table>";
+
+        //return $table;
 
         echo $table;
     }
