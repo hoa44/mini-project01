@@ -110,7 +110,7 @@ class recordFactory {
         $record = new record($fieldNames, $record);
 
         return $record;
-        
+
 
 }
 
@@ -131,7 +131,8 @@ class html
             }
             $count++;
 
-    }
+        }
+
 
 
         $table = "";
