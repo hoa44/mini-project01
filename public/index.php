@@ -3,20 +3,15 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 
-
 <?php
 /**
  * Created by PhpStorm.
- * User: user1
+ * User: user1  (Hub Arnold)
  * Date: 2/8/19
  * Time: 10:00 AM
  */
 
-
-
 main::start("example.csv");
-
-
 
 class main{
 
@@ -28,22 +23,16 @@ class main{
 
         $records = CSV::getRecords($csvfilename);
         $table = html::generateTable($records);
-
+        system::printPage($table);
 
 
         }
-
-
 }
-
-
 class CSV
 {
 
     static public function getRecords($csvfilename)
     {
-
-
         $file = fopen($csvfilename, "r");
 
         $fieldNames = array();
@@ -59,18 +48,12 @@ class CSV
                 $records[] = recordFactory::create($fieldNames, $record);
             }
             $count++;
-
         }
-
 
         fclose($file);
         return $records;
-
     }
 }
-
-
-
 class record {
 
     public function __construct(Array $fieldNames = null, $values = null)
@@ -96,10 +79,6 @@ class record {
 
     }
 }
-
-
-
-
 class recordFactory {
 
     public static function create(Array $fieldNames = null, Array $record = null) {
@@ -110,15 +89,11 @@ class recordFactory {
         $record = new record($fieldNames, $record);
 
         return $record;
-
-
-}
-
-
+    }
 }
 class html
 {
-    public static function generateTable($records)
+    public function generateTable($records)
     {
 
         $count = 0;
@@ -130,41 +105,43 @@ class html
             } else {
             }
             $count++;
-
         }
 
+        $html = "";
 
+        $html .= "<div class='container', style='background-color: lightcyan' >";
 
-        $table = "";
+        $html .= "<table class='table table-striped table-hover'>";
 
-        $table .= "<div class='container', style='background-color: wheat' >";
-
-        $table .= "<table class='table table-striped table-hover'>";
-
-        $table .= "<tr>";
+        $html .= "<tr>";
 
         foreach ($headings as $key => $value) {
-            $table .= "<th>$value</th>";
+            $html .= "<th>$value</th>";
         }
-        $table .= "</tr>";
+        $html .= "</tr>";
 
         foreach ($records as $key => $value) {
-            $table .= "<tr>";
+            $html .= "<tr>";
                 foreach ($value as $key2 => $value2)
-                    $table .= "<td>$value2</td>";
+                    $html .= "<td>$value2</td>";
         }
-        $table .= "</tr>";
+        $html .= "</tr>";
 
-        $table .= "</table>";
+        $html .= "</table>";
 
-        //return $table;
+        $table = $html;
 
-        echo $table;
+        return $table;
     }
+}
+class system {
+    static public function printPage($page){
 
+        echo $page;
+
+    }
 }
 
-?>
 
 
 

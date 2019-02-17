@@ -1,5 +1,6 @@
-First,Last,UCID,Grade,Term,School,Major,Course
-Keith,Williams,kwilliams,A,Fall,NJIT,CS,CS101
-Joe,Smith,jsmith,B,Fall,Rutgers,EE,EE201
-Jack,Johnson,jjohnson,B,Summer,Rutgers,ME,ME-409
-Harry,Manback,hmanback,F,Spring,NJIT,CE,CE-345
+First,Last,UCID,Grade,Year,Term,School,Major,Course
+Keith,Williams,kwilliams,A,2017,Fall,NJIT,CS,CS-101
+Joe,Smith,jsmith,B,2019,Fall,Rutgers,EE,EE-201
+Jack,Johnson,jjohnson,B,2018,Summer,Rutgers,ME,ME-409
+Harry,Manback,hmanback,F,2011,Spring,NJIT,CE,CE-345
+Hubbard,Arnold,harnold,B+,2019,Spring,NJIT,SE,IS-601
