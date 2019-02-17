@@ -82,9 +82,7 @@ class record {
 class recordFactory {
 
     public static function create(Array $fieldNames = null, Array $record = null) {
-
-        // print_r($fieldNames);
-        // print_r($record);
+        
 
         $record = new record($fieldNames, $record);
 
