@@ -15,16 +15,11 @@ main::start("example.csv");
 
 class main{
 
-
-    /**
-     *
-     */
     static public function start($csvfilename) {
 
         $records = CSV::getRecords($csvfilename);
-        $table = html::generateTable($records);
-        system::printPage($table);
-
+        $html_table = html::generateTable($records);
+        system::printPage($html_table);
 
         }
 }
@@ -59,8 +54,6 @@ class record {
     public function __construct(Array $fieldNames = null, $values = null)
     {
 
-        //print_r($fieldNames);
-       // print_r($values);
         $record = array_combine($fieldNames, $values);
 
         foreach ($record as $property => $value) {
@@ -82,7 +75,7 @@ class record {
 class recordFactory {
 
     public static function create(Array $fieldNames = null, Array $record = null) {
-        
+
 
         $record = new record($fieldNames, $record);
 
@@ -99,37 +92,39 @@ class html
 
             if ($count == 0) {
                 $array = $record->returnArray();
-                $headings = array_keys($array);
-            } else {
+                $headings = array_keys($array);  // pull table headings from full array result using "array_keys"
+            }
+                else {
             }
             $count++;
         }
 
-        $html = "";
+        // construct html table logic and pull in bootstrap details using bootstrap CDN entires listed at the top.
+        $html_logic = "";
 
-        $html .= "<div class='container', style='background-color: lightcyan' >";
+        $html_logic .= "<div class='container', style='background-color: lightcyan' >";
 
-        $html .= "<table class='table table-striped table-hover'>";
+        $html_logic .= "<table class='table table-striped table-hover'>";
 
-        $html .= "<tr>";
+        $html_logic .= "<tr>";
 
         foreach ($headings as $key => $value) {
-            $html .= "<th>$value</th>";
+            $html_logic .= "<th>$value</th>";
         }
-        $html .= "</tr>";
+        $html_logic .= "</tr>";
 
         foreach ($records as $key => $value) {
-            $html .= "<tr>";
+            $html_logic .= "<tr>";
                 foreach ($value as $key2 => $value2)
-                    $html .= "<td>$value2</td>";
+                    $html_logic .= "<td>$value2</td>";
         }
-        $html .= "</tr>";
+        $html_logic .= "</tr>";
 
-        $html .= "</table>";
+        $html_logic .= "</table>";
 
-        $table = $html;
+        $html_table = $html_logic;
 
-        return $table;
+        return $html_table;
     }
 }
 class system {
@@ -139,18 +134,3 @@ class system {
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
